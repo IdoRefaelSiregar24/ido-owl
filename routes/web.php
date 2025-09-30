@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\MatakuliahController;
 
@@ -43,9 +44,7 @@ Route::get('/about', function () {
 // Route::get('matakuliah/show/{param1?}', [MatakuliahController::class, 'show'])->name('mata-kuliah.show');
 
 
-Route::get('home', function () {
-    return view('home');
-});
+Route::get('/home', [HomeController::class,'index']);
 
 Route::post('question/store', [QuestionController::class, 'store'])
-		->name('question.store');   
+		->name('question.store');
