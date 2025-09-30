@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\MatakuliahController;
 
 
@@ -30,7 +32,6 @@ Route::get('/nim/{param1?}', function ($param1 = '') {
 });
 
 Route::get('mahasiswa/{param1}', [MahasiswaController::class, 'show'])->name('user.show');
-
 Route::get('mahasiswa/detail/{param1}', [MahasiswaController::class, 'show'])->name('detail.show');
 
 
@@ -38,6 +39,13 @@ Route::get('/about', function () {
     return view('halaman-about');
 });
 
-Route::get('mata-kuliah', [MatakuliahController::class, 'index'])->name('mata-kuliah.index');
+// Route::get('mata-kuliah', [MatakuliahController::class, 'index'])->name('mata-kuliah.index');
+// Route::get('matakuliah/show/{param1?}', [MatakuliahController::class, 'show'])->name('mata-kuliah.show');
 
-Route::get('matakuliah/show/{param1?}', [MatakuliahController::class, 'show'])->name('mata-kuliah.show');
+
+Route::get('home', function () {
+    return view('home');
+});
+
+Route::post('question/store', [QuestionController::class, 'store'])
+		->name('question.store');   
