@@ -12,10 +12,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', function () {
-    return view('login');
-});
-
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR!';
 });
@@ -26,11 +22,11 @@ Route::get('/mahasiswa', function () {
 })->name('mahasiswa.show');
 
 Route::get('/nama/{param1}', function ($param1) {
-    return 'Nama saya: '.$param1;
+    return 'Nama saya: ' . $param1;
 });
 
 Route::get('/nim/{param1?}', function ($param1 = '') {
-    return 'NIM saya: '.$param1;
+    return 'NIM saya: ' . $param1;
 });
 
 Route::get('mahasiswa/{param1}', [MahasiswaController::class, 'show'])->name('user.show');
@@ -45,11 +41,16 @@ Route::get('/about', function () {
 // Route::get('matakuliah/show/{param1?}', [MatakuliahController::class, 'show'])->name('mata-kuliah.show');
 
 
-Route::get('/home', [HomeController::class,'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::post('question/store', [QuestionController::class, 'store'])
-		->name('question.store');
+    ->name('question.store');
+
+
+// Route untuk login
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
 
 //Route untuk admin
-Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');

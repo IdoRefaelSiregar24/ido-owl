@@ -1210,4 +1210,14 @@
 	<script src="{{asset('vendor/onscreen/dist/on-screen.umd.min.js')}}"></script>
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- Alert sukses --}}
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Berhasil Login',
+    text: '{{ session('success') }}',
+    showConfirmButton: true
+});
+</script>
 </html>
