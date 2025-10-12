@@ -31,7 +31,7 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets-admin/img/favicon/favicon-32x32.png')}}">>
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets-admin/img/favicon/favicon-16x16.png')}}">
 	<link rel="manifest" href="{{asset('assets-admin/img/favicon/site.webmanifest')}}">
-	<link rel="mask-icon" href="../../assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+	<link rel="mask-icon" href="{{asset('assets-admin/img/favicon/safari-pinned-tab.svg" color="#ffffff')}}">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="theme-color" content="#ffffff">
 
@@ -39,7 +39,7 @@
 	<link type="text/css" href="{{asset('assets-admin/css/volt.css')}}" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets-admin/css/volt.css.map">
+    <link rel="stylesheet" href="{{asset('/assets-admin/css/volt.css.map')}}">
 
 </head>
 
