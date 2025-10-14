@@ -26,6 +26,7 @@
     <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
     <meta name="author" content="Themesberg">
 
+<<<<<<< HEAD
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets-admin/img/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32"
@@ -36,12 +37,22 @@
     <link rel="mask-icon" href="../../assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
+=======
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="120x120" href="{{asset('assets-admin/img/favicon/apple-touch-icon.png')}}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{asset('assets-admin/img/favicon/favicon-32x32.png')}}">>
+	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets-admin/img/favicon/favicon-16x16.png')}}">
+	<link rel="manifest" href="{{asset('assets-admin/img/favicon/site.webmanifest')}}">
+	<link rel="mask-icon" href="{{asset('assets-admin/img/favicon/safari-pinned-tab.svg" color="#ffffff')}}">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="theme-color" content="#ffffff">
+>>>>>>> 805eeb781ecd533572d49bdc47da9584b04a2228
 
     <!-- Volt CSS -->
     <link type="text/css" href="{{ asset('assets-admin/css/volt.css') }}" rel="stylesheet">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/assets-admin/css/volt.css.map">
+    <link rel="stylesheet" href="{{asset('/assets-admin/css/volt.css.map')}}">
 
 </head>
 
@@ -1241,4 +1252,14 @@
     <script src="{{ asset('vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- Alert sukses --}}
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Berhasil Login',
+    text: '{{ session('success') }}',
+    showConfirmButton: true
+});
+</script>
 </html>
