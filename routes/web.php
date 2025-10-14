@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MatakuliahController;
 
 
@@ -53,3 +54,6 @@ Route::post('question/store', [QuestionController::class, 'store'])
 
 //Route untuk admin
 Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+
+//Route Untuk Pelanggan Controller
+Route::resource('pelanggan', PelangganController::class);
