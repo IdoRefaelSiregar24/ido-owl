@@ -5,7 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
+<<<<<<< HEAD
 use App\Http\Controllers\MahasiswaController;
+=======
+use App\Http\Controllers\PelangganController;
+>>>>>>> 55fbaca020afcbed2f914f060b77a59bb83d4d02
 use App\Http\Controllers\MatakuliahController;
 
 
@@ -54,6 +58,16 @@ Route::get('register', [AuthController::class, 'showRegister'])->name('register.
 Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 
 //Route untuk admin
+<<<<<<< HEAD
+Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
+
+//Route Untuk Pelanggan Controller
+Route::resource('pelanggan', PelangganController::class);
+=======
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 805eeb781ecd533572d49bdc47da9584b04a2228
+>>>>>>> 55fbaca020afcbed2f914f060b77a59bb83d4d02
