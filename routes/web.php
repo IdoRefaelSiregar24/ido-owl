@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\MatakuliahController;
 
 
@@ -37,9 +38,6 @@ Route::get('/about', function () {
     return view('halaman-about');
 });
 
-// Route::get('mata-kuliah', [MatakuliahController::class, 'index'])->name('mata-kuliah.index');
-// Route::get('matakuliah/show/{param1?}', [MatakuliahController::class, 'show'])->name('mata-kuliah.show');
-
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -51,10 +49,11 @@ Route::post('question/store', [QuestionController::class, 'store'])
 Route::get('login', [AuthController::class, 'index'])->name('login.show');
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
-//Route untuk mata register
+//Route untuk register
 Route::get('register', [AuthController::class, 'showRegister'])->name('register.show');
 Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 
-
 //Route untuk admin
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
