@@ -63,7 +63,7 @@ Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
 //Route untuk register
 Route::get('register', [AuthController::class, 'showRegister'])->name('register.show');
-Route::post('register', [AuthController::class, 'register'])->name('auth.register');
+// Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 
 //Route untuk admin
 Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
