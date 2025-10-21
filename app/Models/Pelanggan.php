@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Pelanggan extends Authenticatable
 {
     protected $table = 'pelanggan';
-    protected $primarykey = 'pelangan_id';
+    protected $primaryKey = 'pelanggan_id';
     protected $fillable = [
         'first_name',
         'last_name',

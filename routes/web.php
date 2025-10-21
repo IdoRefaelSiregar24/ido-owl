@@ -58,11 +58,15 @@ Route::post('register', [AuthController::class, 'register'])->name('auth.registe
 
 
 //Route untuk admin
-<<<<<<< HEAD
+Route::get('login', [AuthController::class, 'index'])->name('login.show');
+Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+
+//Route untuk register
+Route::get('register', [AuthController::class, 'showRegister'])->name('register.show');
+Route::post('register', [AuthController::class, 'register'])->name('auth.register');
+
+//Route untuk admin
 Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
 
 //Route Untuk Pelanggan Controller
 Route::resource('pelanggan', PelangganController::class);
-=======
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
->>>>>>> 805eeb781ecd533572d49bdc47da9584b04a2228
