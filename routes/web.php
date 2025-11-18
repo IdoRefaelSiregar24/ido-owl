@@ -10,9 +10,9 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MatakuliahController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/pcr', function () {
     return 'Selamat Datang di Website Kampus PCR!';
@@ -42,6 +42,9 @@ Route::get('/about', function () {
 // Route::get('mata-kuliah', [MatakuliahController::class, 'index'])->name('mata-kuliah.index');
 // Route::get('matakuliah/show/{param1?}', [MatakuliahController::class, 'show'])->name('mata-kuliah.show');
 
+//Route untuk admin
+Route::get('/',[DashboardController::class,'index'])->name('dashboard');
+
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -65,9 +68,6 @@ Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 //Route untuk register
 Route::get('register', [AuthController::class, 'showRegister'])->name('register.show');
 // Route::post('register', [AuthController::class, 'register'])->name('auth.register');
-
-//Route untuk admin
-Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard');
 
 //Route Untuk Pelanggan Controller
 Route::resource('pelanggan', PelangganController::class);
