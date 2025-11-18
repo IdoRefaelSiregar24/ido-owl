@@ -54,6 +54,8 @@
                                         </option>
                                         <option value="Female" {{ request('gender') == 'Female' ? 'selected' : '' }}>Female
                                         </option>
+                                        <option value="Other" {{ request('gender') == 'Other' ? 'selected' : '' }}>Other
+                                        </option>
                                     </select>
                                 </div>
                                 {{-- Search --}}
