@@ -36,6 +36,7 @@
 
                     <form action="{{ route('pelanggan.update', $dataPelanggan->pelanggan_id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="row mb-4">
                             <div class="col-lg-4 col-sm-6">
                                 <!-- First Name -->

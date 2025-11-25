@@ -103,7 +103,8 @@ class PelangganController extends Controller
         $pelanggan->first_name = $request->first_name;
 
         $pelanggan->save();
-        return redirect()->route('pelanggan.index'->with('success', 'Perubahan Data Berhasil'));
+        return redirect()->route('pelanggan.index')->with('success', 'Perubahan Data Berhasil');
+
     }
 
     /**
