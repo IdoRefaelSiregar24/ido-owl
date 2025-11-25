@@ -15,7 +15,7 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('pelanggan.index') }}">Pelanggan</a></li>
             </ol>
         </nav>
         <div class="d-flex justify-content-between w-100 flex-wrap">
@@ -130,6 +130,18 @@
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->phone }}</td>
                                         <td>
+                                            <a href="{{ route('pelanggan.detail', $item->pelanggan_id) }}"
+                                                class="btn btn-info btn-sm">
+                                                <svg class="icon icon-xs me-2" fill="none" stroke="currentColor"
+                                                    stroke-width="1.5" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M2.25 12s2.25-6.75 9.75-6.75 9.75 6.75 9.75 6.75-2.25 6.75-9.75 6.75S2.25 12 2.25 12z" />
+                                                    <circle cx="12" cy="12" r="3"></circle>
+                                                </svg>
+
+                                                Detail
+                                            </a>
                                             <a href="{{ route('pelanggan.edit', $item->pelanggan_id) }}"
                                                 class="btn btn-info btn-sm">
                                                 <svg class="icon icon-xs me-2" data-slot="icon" fill="none"
