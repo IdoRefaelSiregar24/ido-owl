@@ -60,29 +60,6 @@
             </div>
         </div>
 
-        {{-- Card Upload File  --}}
-        <div class="card mb-4">
-            <div class="card-header">
-                <strong>Upload File</strong>
-            </div>
-            <div class="card-body">
-
-                <form action="{{ route('uploads.store') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-
-                    <input type="hidden" name="ref_table" value="pelanggan">
-                    <input type="hidden" name="ref_id" value="{{ $pelanggan->pelanggan_id }}">
-
-
-
-                    <label>File Pendukung:</label>
-                    <input type="file" name="filename[]" multiple class="form-control">
-
-                    <button type="submit" class="btn btn-primary mt-3">Upload</button>
-                </form>
-            </div>
-        </div>
-
 
         {{-- Card List File Pendukung --}}
         <div class="card">
@@ -108,14 +85,6 @@
                                 @endif
 
                                 {{ $file->filename }}
-
-                                {{-- Tombol hapus --}}
-                                <form action="{{ route('uploads.destroy', $file->id) }}" method="POST"
-                                    style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                </form>
                             </li>
                         @empty
                             <li>Belum ada file.</li>

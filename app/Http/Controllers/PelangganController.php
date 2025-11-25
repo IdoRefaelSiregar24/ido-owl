@@ -60,11 +60,20 @@ class PelangganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
+        // Ambil data pelanggan
         $data['dataPelanggan'] = Pelanggan::findOrFail($id);
+
+        // Ambil semua file milik pelanggan ini
+        $data['pelangganFiles'] = MultipleUploads::where('ref_table', 'pelanggan')
+            ->where('ref_id', $data['dataPelanggan']->pelanggan_id) // pastikan ini sesuai kolom ID di DB
+            ->get();
+
+        // Kirim ke view
         return view('admin.pelanggan.edit', $data);
     }
+
 
     public function detail($id)
     {

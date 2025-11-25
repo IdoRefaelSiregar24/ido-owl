@@ -105,5 +105,74 @@
 
             </div>
         </div>
+        <div class="col-12 mb-4">
+
+            {{-- Card Upload File  --}}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <strong>Upload File</strong>
+                </div>
+                <div class="card-body">
+
+                    <form action="{{ route('uploads.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <input type="hidden" name="ref_table" value="pelanggan">
+                        <input type="hidden" name="ref_id" value="{{ $dataPelanggan->pelanggan_id }}">
+
+
+
+                        <label>File Pendukung:</label>
+                        <input type="file" name="filename[]" multiple class="form-control">
+
+                        <button type="submit" class="btn btn-primary mt-3">Upload</button>
+                    </form>
+                </div>
+            </div>
+
+
+            {{-- Card List File Pendukung --}}
+            <div class="card">
+                <div class="card-header">
+                    <strong>Daftar File Pendukung</strong>
+                </div>
+
+                <div class="card-body">
+                    @if ($pelangganFiles->count() == 0)
+                        <p class="text-muted">Belum ada file yang diupload.</p>
+                    @else
+                        <ul class="list-group">
+                            @forelse ($pelangganFiles as $file)
+                                <li>
+                                    @php
+                                        $extension = strtolower(pathinfo($file->filename, PATHINFO_EXTENSION));
+                                    @endphp
+
+                                    {{-- Tampilkan thumbnail jika gambar --}}
+                                    @if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp']))
+                                        <img src="{{ asset('uploads/' . $file->filename) }}" width="50"
+                                            alt="{{ $file->filename }}">
+                                    @endif
+
+                                    {{ $file->filename }}
+
+                                    {{-- Tombol hapus --}}
+                                    <form action="{{ route('uploads.destroy', $file->id) }}" method="POST"
+                                        style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                    </form>
+                                </li>
+                            @empty
+                                <li>Belum ada file.</li>
+                            @endforelse
+                        </ul>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
+    </div>
+
 @endsection
