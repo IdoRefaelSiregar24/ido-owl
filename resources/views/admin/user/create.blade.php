@@ -47,10 +47,18 @@
                             </div>
                         @endif
                     </div>
-                    <form action="{{ route('user.store') }}" method="POST">
+                    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-6 col-sm-12">
+
+                                {{-- Foto Profil --}}
+                                <div class="mb-3">
+                                    <label for="user_picture">User Picture :</label>
+                                    {{-- Input upload foto baru --}}
+                                    <input type="file" name="user_picture" id="user_picture" class="form-control mt-2">
+                                </div>
+
                                 {{-- Name --}}
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama</label>

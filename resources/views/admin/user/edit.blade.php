@@ -48,11 +48,32 @@
                             @endif
                         </div>
 
-                        <form action="{{ route('user.update', $dataUser->id) }}" method="POST">
+                        <form action="{{ route('user.update', $dataUser->id) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row mb-4">
                                 <div class="col-lg-4 col-sm-6">
+
+                                    {{-- Foto Profil --}}
+                                    <label for="user_picture">User Picture:</label>
+
+                                    {{-- Tampilkan foto lama jika ada --}}
+                                    @if ($dataUser->user_picture)
+                                        <div class="mb-2">
+                                            <img src="{{ asset('storage/' . $dataUser->user_picture) }}" alt="User Picture"
+                                                style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;">
+                                        </div>
+                                    @endif
+
+                                    {{-- Simpan path lama dalam hidden input --}}
+                                    <input type="hidden" name="old_user_picture" value="{{ $dataUser->user_picture }}">
+
+                                    {{-- Input upload foto baru --}}
+                                    <input type="file" name="user_picture" id="user_picture" class="form-control mt-2">
+
+                                    <br>
+
                                     <!-- Nama -->
                                     <div class="mb-3">
                                         <label for="name" class="form-label">First name</label>
@@ -70,8 +91,9 @@
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Ubah Password</label>
                                         <input type="password" id="password" name="password" class="form-control"
-                                            value="{{ $dataUser->password }}" placeholder="Masukkan password baru">
+                                            placeholder="Masukkan password baru (opsional)">
                                     </div>
+
 
                                     {{-- Password Confirmation --}}
                                     <div class="mb-3">

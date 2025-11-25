@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MatakuliahController;
 
@@ -74,3 +76,6 @@ Route::resource('pelanggan', PelangganController::class);
 
 //Route Untuk User Controller
 Route::resource('user', UserController::class);
+
+//Route Untuk User Profile
+Route::resource('profile', ProfileController::class);

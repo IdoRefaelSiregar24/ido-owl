@@ -48,6 +48,7 @@
                                 <tr>
                                     <th class="border-0">#</th>
                                     <th class="border-0">Nama</th>
+                                    <th class="border-0">Photo Profile</th>
                                     <th class="border-0">Email</th>
                                     <th class="border-0">Password</th>
                                     <th class="border-0">Email</th>
@@ -59,11 +60,18 @@
                                         <td>
                                             {{ $loop->iteration }}
                                         <td>{{ $user->name }}</td>
+                                        <td>
+                                            @if ($user->user_picture)
+                                                <img src="{{ Storage::url($user->user_picture) }}" alt="Profile Picture"
+                                                    width="60">
+                                            @else
+                                                <p>No profile picture uploaded.</p>
+                                            @endif
+                                        </td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->password }}</td>
                                         <td>
-                                            <a href="{{ route('user.edit', $user->id) }}"
-                                                class="btn btn-info btn-sm">
+                                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-info btn-sm">
                                                 <svg class="icon icon-xs me-2" data-slot="icon" fill="none"
                                                     stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24"
                                                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -73,8 +81,8 @@
                                                 </svg>
                                                 Edit
                                             </a>
-                                            <form action="{{ route('user.destroy', $user->id) }}"
-                                                method="POST" style="display:inline">
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST"
+                                                style="display:inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm">
