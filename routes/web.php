@@ -47,6 +47,7 @@ Route::get('/about', function () {
 
 //Route untuk admin
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -65,6 +66,7 @@ Route::post('register', [AuthController::class, 'register'])->name('auth.registe
 //Route untuk admin
 Route::resource('auth', AuthController::class);
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 //Route untuk register
 Route::get('register', [AuthController::class, 'showRegister'])->name('register.show');

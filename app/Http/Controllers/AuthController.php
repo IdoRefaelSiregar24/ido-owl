@@ -94,6 +94,16 @@ class AuthController extends Controller
         return view("admin.auth.register");
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();      // Menghapus Hapus semua session
+        $request->session()->regenerateToken(); // Cegah CSRF
+
+        // Redirect ke halaman login
+        return redirect()->route('auth.index');
+    }
+
     /**
      * Display the specified resource.
      */
