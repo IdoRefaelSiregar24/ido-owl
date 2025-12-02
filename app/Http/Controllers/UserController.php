@@ -35,6 +35,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed',
             'user_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5000',
+            'role'=>'required'
         ], [
             'name.required' => 'Nama wajib diisi.',
             'name.max' => 'Nama tidak boleh lebih dari 100 karakter.',
@@ -44,6 +45,7 @@ class UserController extends Controller
             'password.required' => 'Password wajib diisi.',
             'password.min' => 'Password minimal 8 karakter.',
             'password.confirmed' => 'Konfirmasi password tidak sesuai.',
+            'role.require' => 'Role Tidak Boleh Kosong'
         ]);
 
         // Default value
@@ -57,6 +59,7 @@ class UserController extends Controller
         User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
+            'role' => $validatedData['role'],
             'password' => Hash::make($validatedData['password']),
             'user_picture' => $picturePath,
         ]);

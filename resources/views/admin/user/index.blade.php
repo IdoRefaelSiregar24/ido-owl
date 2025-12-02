@@ -48,10 +48,11 @@
                                 <tr>
                                     <th class="border-0">#</th>
                                     <th class="border-0">Nama</th>
-                                    <th class="border-0">Photo Profile</th>
+                                    <th class="border-0">Foto Profil</th>
                                     <th class="border-0">Email</th>
                                     <th class="border-0">Password</th>
-                                    <th class="border-0">Email</th>
+                                    <th class="border-0">Role</th>
+                                    <th class="border-0">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,6 +71,7 @@
                                         </td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->password }}</td>
+                                        <td>{{ $user->role }}</td>
                                         <td>
                                             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-info btn-sm">
                                                 <svg class="icon icon-xs me-2" data-slot="icon" fill="none"

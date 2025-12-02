@@ -17,7 +17,8 @@ class CreateFirstUser extends Seeder
     {
         $data['name']='Admin';
         $data['email']='ido24si@mahasiswa.pcr.ac.id';
-        $data['password'] = Hash::make('Asdfg123');
+        $data['password'] = Hash::make('ido24si@mahasiswa.pcr.ac.id');
+        $data['role']='Super Admin';
         User::Create($data);
     }
 }

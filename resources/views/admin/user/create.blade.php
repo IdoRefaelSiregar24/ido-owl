@@ -73,6 +73,22 @@
                                         class="form-control @error('email') is-invalid @enderror" required>
                                 </div>
 
+                                {{-- Role --}}
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Role</label>
+                                    <select name="role" class="form-select">
+                                        <option value="">Pilih Role</option>
+                                        <option value="Super Admin" {{ request('role') == 'Super Admin' ? 'selected' : '' }}>Super Admin
+                                        </option>
+                                        <option value="Pelanggan" {{ request('role') == 'Pelanggan' ? 'selected' : '' }}>Pelanggan
+                                        </option>
+                                        <option value="Mitra" {{ request('role') == 'Mitra' ? 'selected' : '' }}>Mitra
+                                        </option>
+                                        <option value="Other" {{ request('role') == 'Other' ? 'selected' : '' }}>Other
+                                        </option>
+                                    </select>
+                                </div>
+
                                 {{-- Password --}}
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
