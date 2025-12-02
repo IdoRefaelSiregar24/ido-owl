@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -12,7 +12,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view("login");
+        return view("admin.auth.login");
     }
 
     /**
@@ -28,33 +28,18 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        // Validasi input
         $request->validate([
-            'username' => 'required',
-            'password' => [
-                'required',
-            ],
-        ], [
-            'username.required' => 'Username wajib diisi.',
-            'password.required' => 'Password wajib diisi.',
+            'email'    => 'required|email',
+            'password' => 'required',
+
         ]);
 
-        // Data login sementara
-        $validUser = [
-            'nim' => '2457301067',
-        ];
+        $user = User::where('email', $request->email)->first();
+        if ($user && Hash::check($request->password, $user->password)) {
 
-        // Cek username & password
-        if (
-            $request->username === $validUser['nim'] &&
-            $request->password === $validUser['nim']
-        ) {
-            // Simpan sesi login
-            session(['username' => $request->username]);
-
-            // Redirect ke dashboard
-            return redirect()->route('dashboard')
-                ->with('success', 'Selamat datang, Admin!');
+            return redirect()->route('dashboard')->with('success', 'Login berhasil!');
+        } else {
+            return back()->withErrors(['email' => 'Email atau password salah'])->withInput();
         }
 
         // Jika gagal login
@@ -63,31 +48,30 @@ class AuthController extends Controller
             ->withInput();
     }
 
-
     public function register(Request $request)
     {
         $validatedData = $request->validate([
-            'nama' => ['required', 'regex:/^[^0-9]*$/'],
-            'alamat' => ['required', 'string', 'max:300'],
-            'tanggal_lahir' => ['required', 'date'],
-            'username' => ['required', 'string', 'max:50'],
-            'password' => [
+            'nama'             => ['required', 'regex:/^[^0-9]*$/'],
+            'alamat'           => ['required', 'string', 'max:300'],
+            'tanggal_lahir'    => ['required', 'date'],
+            'username'         => ['required', 'string', 'max:50'],
+            'password'         => [
                 'required',
                 'min:6',
-                'regex:/^(?=.*[A-Z])(?=.*\d).+$/'
+                'regex:/^(?=.*[A-Z])(?=.*\d).+$/',
             ],
             'confirm_password' => ['required'],
         ], [
-            'nama.required' => 'Nama wajib diisi.',
-            'nama.regex' => 'Nama tidak boleh mengandung angka.',
-            'alamat.required' => 'Alamat wajib diisi.',
-            'alamat.max' => 'Alamat maksimal 300 karakter.',
-            'tanggal_lahir.required' => 'Tanggal lahir wajib diisi.',
-            'tanggal_lahir.date' => 'Format tanggal lahir tidak valid.',
-            'username.required' => 'Username wajib diisi.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min' => 'Password minimal 6 karakter.',
-            'password.regex' => 'Password harus mengandung huruf kapital dan angka.',
+            'nama.required'             => 'Nama wajib diisi.',
+            'nama.regex'                => 'Nama tidak boleh mengandung angka.',
+            'alamat.required'           => 'Alamat wajib diisi.',
+            'alamat.max'                => 'Alamat maksimal 300 karakter.',
+            'tanggal_lahir.required'    => 'Tanggal lahir wajib diisi.',
+            'tanggal_lahir.date'        => 'Format tanggal lahir tidak valid.',
+            'username.required'         => 'Username wajib diisi.',
+            'password.required'         => 'Password wajib diisi.',
+            'password.min'              => 'Password minimal 6 karakter.',
+            'password.regex'            => 'Password harus mengandung huruf kapital dan angka.',
             'confirm_password.required' => 'Konfirmasi password wajib diisi.',
         ]);
 
@@ -101,10 +85,9 @@ class AuthController extends Controller
             ->with('success-register', 'Registrasi berhasil! Silakan Login.');
     }
 
-
     public function showRegister()
     {
-        return view("register");
+        return view("admin.auth.register");
     }
 
     /**

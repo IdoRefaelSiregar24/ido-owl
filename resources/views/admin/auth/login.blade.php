@@ -149,8 +149,8 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <input type="username" name="username" class="form-control"
-                                            value="{{ old('username') }}" placeholder="example@company.com"
+                                        <input type="email" name="email" class="form-control"
+                                            value="{{ old('email') }}" placeholder="example@company.com"
                                             id="email" autofocus required>
                                     </div>
                                 </div>

@@ -55,9 +55,7 @@ Route::post('question/store', [QuestionController::class, 'store'])
     ->name('question.store');
 
 
-// Route untuk login
-Route::get('login', [AuthController::class, 'index'])->name('login.show');
-Route::post('login', [AuthController::class, 'login'])->name('auth.login');
+
 
 //Route untuk mata register
 Route::get('register', [AuthController::class, 'showRegister'])->name('register.show');
@@ -65,7 +63,7 @@ Route::post('register', [AuthController::class, 'register'])->name('auth.registe
 
 
 //Route untuk admin
-Route::get('login', [AuthController::class, 'index'])->name('login.show');
+Route::resource('auth', AuthController::class);
 Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
 //Route untuk register
